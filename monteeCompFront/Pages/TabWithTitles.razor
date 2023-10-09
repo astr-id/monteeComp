@@ -1,0 +1,54 @@
+﻿<h1>@ChildContent</h1>
+
+<table>
+
+    <tr>
+        @foreach (var titre in Titres)
+        {
+            <td>@titre</td>
+        }
+    </tr>
+
+    <tr>
+        @foreach (var contenu in Contenus)
+        {
+            <td>@contenu</td>
+        }
+    </tr>
+
+   
+
+
+</table>
+
+
+@code {
+    //private List<string> listTitres = new() { "Titre 1", "Titre 2", "Titre 3", "Titre 4" };
+    //private List<string> listContenus = new() { "Cont. 1", "Cont. 2", "Cont. 3", "Cont. 4 " };
+
+
+    [Parameter]
+    public List<string> Titres { get; set; }
+
+    [Parameter]
+    public List<string> Contenus { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Titres.Count > Contenus.Count)
+            
+            {
+                var suppr = Titres.Count - Contenus.Count;
+                Titres.RemoveRange(Titres.Count - suppr, suppr);
+            }
+    else if (Contenus.Count > Titres.Count)
+            {
+                var suppr = Contenus.Count - Titres.Count;
+                Contenus.RemoveRange(Contenus.Count - suppr, suppr);
+            }
+
+    }
+}

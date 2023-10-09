@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "monteeCompFront", "monteeCompFront\monteeCompFront.csproj", "{EA834190-6481-4E6E-BACB-3B16D2554359}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "monteeCompBack", "monteeCompBack\monteeCompBack.csproj", "{A1FF3807-8A0D-40EA-9DC0-0B0FD6990A7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA834190-6481-4E6E-BACB-3B16D2554359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA834190-6481-4E6E-BACB-3B16D2554359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA834190-6481-4E6E-BACB-3B16D2554359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA834190-6481-4E6E-BACB-3B16D2554359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1FF3807-8A0D-40EA-9DC0-0B0FD6990A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1FF3807-8A0D-40EA-9DC0-0B0FD6990A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1FF3807-8A0D-40EA-9DC0-0B0FD6990A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1FF3807-8A0D-40EA-9DC0-0B0FD6990A7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A430FD8E-FEA5-4E44-9176-08CCEEFFA023}
+	EndGlobalSection
+EndGlobal

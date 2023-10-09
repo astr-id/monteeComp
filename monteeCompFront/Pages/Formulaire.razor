@@ -1,0 +1,25 @@
+﻿<EditForm Model="@exampleModel" OnSubmit="@HandleSubmit">
+    <InputText id="name" @bind-Value="exampleModel.Name"  placeholder=@placeholder/>
+
+    <button type="submit">@textButton</button>
+
+</EditForm>
+
+<p>@exampleModel.Name</p>
+
+@code {
+    [Parameter]
+    public string placeholder { get; set; }
+
+    [Parameter]
+    public string textButton { get; set; }
+
+    private ExampleModel exampleModel = new();
+
+    private void HandleSubmit()
+    {
+        // Process the form
+    }
+    
+
+}

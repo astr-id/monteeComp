@@ -1,0 +1,33 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<CustomTitle>Hello World !</CustomTitle>
+
+<br/>
+
+<EmptyTab columnNbr="4" rowsNbr="3"/>
+
+<br/>
+
+<TabWithTitles Titres="listTitres" 
+                Contenus="listContenus">
+      Titre du Tableau
+</TabWithTitles>
+
+<br/>
+
+<Formulaire placeholder="Ecrire ici" textbutton="Valider"/>
+
+
+@code {
+    private List<string> listTitres = new() { "Titre 1", "Titre 2", "Titre 3", "Titre 4" };
+    private List<string> listContenus = new() { "Cont. 1", "Cont. 2", "Cont. 3", "Cont. 4", "Cont. 5", "Cont. 6" };
+
+       
+
+}

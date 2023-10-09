@@ -1,0 +1,66 @@
+﻿@page "/listevoiture"
+
+@inject HttpClient http
+
+<h3>Liste des Voitures</h3>
+
+@if (voitures != null) {
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marque</th>
+                <th>Couleur</th>
+                <th>Poids</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var voiture in voitures)
+            {
+                <tr>
+                    <td>@voiture.Id</td>
+                    <td>@voiture.Marque</td>
+                    <td>@voiture.Couleur</td>
+                    <td>@voiture.Poids</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="location.href='/modificationvoiture/@voiture.Id'">Modifier</button>
+                    </td>
+                    <td><button @onclick="() => SupprimerVoiture(voiture.Id)">Supprimer</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+else
+{
+    <p>Il n'y a aucune voiture</p>
+}
+
+@code {
+    private Voiture[] voitures;
+
+    protected override async Task OnInitializedAsync()
+    {
+       voitures = await http.GetFromJsonAsync<Voiture[]>("https://localhost:44371/api/Voiture/voitures");
+    }
+
+    private async Task SupprimerVoiture(int Id)
+    {
+        await http.DeleteAsync($"https://localhost:44371/api/Voiture/voitures/{Id}");
+        voitures = await http.GetFromJsonAsync<Voiture[]>("https://localhost:44371/api/Voiture/voitures"); //permet de mettre à jour la liste pour le user
+    }
+
+
+    public class Voiture
+    {
+       
+        public int Id { get; set; }
+        public string Marque { get; set; }
+        public string Couleur { get; set; }
+        public int Poids { get; set; }
+    }
+}

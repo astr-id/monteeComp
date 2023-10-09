@@ -1,0 +1,81 @@
+﻿@page "/creationvoiture"
+@using System.ComponentModel.DataAnnotations
+@inject HttpClient http
+
+<h1>Créez une voiture</h1>
+
+<CascadingValue Value="this.editContext">
+    <editForm Model="@voiture">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <p>
+            <label>
+                Marque :
+            </label>
+            <InputText @bind-Value="voiture.Marque" />
+        </p>
+        <p>
+            <label>
+                Couleur :
+            </label>
+            <InputText @bind-Value="voiture.Couleur" />
+        </p>
+
+        <p>
+            <label>
+                Poids :
+            </label>
+            <InputNumber @bind-Value="voiture.Poids" />
+        </p>
+
+        <button type="submit" @onclick="HandleValidSubmit">Créer</button>
+
+    </editForm>
+
+</CascadingValue>
+
+<p>@message</p>
+
+@code {
+    private Voiture voiture = new();
+    private string message;
+
+    private EditContext editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new(voiture);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+
+        if (editContext.Validate())
+        {
+            var result = await http.PostAsJsonAsync<Voiture>("https://localhost:44371/api/Voiture/voitures", voiture);
+            message = "Voiture crée";
+        }
+        else
+        {
+            message = "La voiture ne peut pas être crée";
+        }
+
+    }
+
+    public class Voiture
+    {
+        [Required]
+        [MaxLength(15, ErrorMessage = "Entrez 15 characteres maximum")]
+        public string Marque { get; set; }
+
+        [Required]
+        [MaxLength(15, ErrorMessage = "Entrez 15 characteres maximum")]
+        public string Couleur { get; set; }
+
+        [Required]
+        [Range(900, 1400, ErrorMessage = "Entrez un chiffre entre 900 et 1400")]
+        public int Poids { get; set; }
+    }
+
+}
+
